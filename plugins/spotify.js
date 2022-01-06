@@ -11,9 +11,11 @@ if (config.LANG == 'SI') HDESC = 'ගීත වල විස්තර spotify �
 AlphaX.addCommand({pattern: 'spotify ?(.*)', fromMe: WType, desc: HDESC}, async (message, match) => {
   
   if (!match[1]) return await message.client.sendMessage(message.jid, '*Enter eny song name :-(*' , MessageType.text, { quoted: message.data });
+  
+  let run;
+  try { await axios.get("https://api.zeks.me/api/spotify?apikey=apivinz&q=" + match[1]); run = true } catch { await message.client.sendMessage(message.jid, '_⛔ Server unavailable please try again later.._' , MessageType.text, { quoted: message.data }); run = false };
 
-  try { await axios.get("https://api.zeks.me/api/spotify?apikey=apivinz&q=" + match[1]) } catch { await message.client.sendMessage(message.jid, '_⛔ Server unavailable please try again later.._' , MessageType.text, { quoted: message.data }) };
-
+  if (run == true) {
       try {
 
       await message.client.sendMessage(message.jid, '*Searching* _' + match[1] + '_ *on spotify..* 🚀' , MessageType.text, { quoted: message.data });
@@ -36,5 +38,5 @@ AlphaX.addCommand({pattern: 'spotify ?(.*)', fromMe: WType, desc: HDESC}, async 
       } catch {
       await message.client.sendMessage(message.jid, '_Request failed!!_' , MessageType.text, { quoted: message.data });
       };
-
+   }
 });
