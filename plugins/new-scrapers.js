@@ -70,8 +70,8 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
 
           try { 
           await message.client.sendMessage(message.jid, Buffer.from(song.data) , MessageType.audio, { mimetype: 'audio/mpeg',quoted: message.data, ptt: false});
+          await message.client.sendMessage(message.jid, Buffer.from(song.data) , MessageType.document, {filename: response.data.result.title + '.mp3', mimetype: 'audio/mpeg', quoted: message.data});
           } catch { await message.client.sendMessage(message.jid, "*🚫 Can't Upload Up To* _100MB_ *File*", MessageType.text, { quoted: message.data }); };
-          await message.client.sendMessage(message.jid, Buffer.from(song.data) , MessageType.document, {filename: title + '.mp3', mimetype: 'audio/mpeg', quoted: message.data});
 
               };
               
@@ -132,8 +132,8 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
 
           try { 
           await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.video, { mimetype: Mimetype.mp4 ,quoted: message.data, thumbnail: Buffer.from(pp.data), caption: '```' + title + '```' });
+          await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.document, { filename: response.data.result.title + '.mp4', mimetype: Mimetype.mp4 ,quoted: message.data }); 
           } catch { await message.client.sendMessage(message.jid, "*🚫 Can't Upload Up To* _100MB_ *File*", MessageType.text, { quoted: message.data }); };
-          await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.document, { filename: title + '.mp4', mimetype: Mimetype.mp4 ,quoted: message.data }); 
 
               };
           
