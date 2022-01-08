@@ -136,7 +136,7 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
       if (down == true) { /* If file is up to 100mb it send a error msg ✅ */
 
           try { 
-          await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.video, { mimetype: Mimetype.mp4 ,quoted: message.data, thumbnail: Buffer.from(pp.data), caption: '```' + title + '```' });
+          await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.video, { mimetype: Mimetype.mp4 ,quoted: message.data, thumbnail: Buffer.from(pp.data), caption: '```' + response.data.result.title + '```' });
           await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.document, { filename: response.data.result.title + '.mp4', mimetype: Mimetype.mp4 ,quoted: message.data }); 
           } catch { await message.client.sendMessage(message.jid, "*🚫 ᴄᴀɴ'ᴛ ᴜᴘʟᴏᴀᴅ ᴜᴘ ᴛᴏ* _100MB_ *ғɪʟᴇs*", MessageType.text, { quoted: message.data }); };
 
