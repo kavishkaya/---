@@ -269,7 +269,7 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
         asynchronous_ch()
         await new Promise(r => setTimeout(r, 200));
         let wtype = config.WORKTYPE == 'public' ? ' Public' : ' Private'
-        console.log(chalk.bgGreen('🛸 Ａｌｐｈａ-Ｘ-WA-Bot ' + wtype));
+        console.log(chalk.bgGreen('😈 Ａｌｐｈａ-Ｘ-DEV-Bot ' + wtyp));
         if (AlphaxCN.user.jid == one || AlphaxCN.user.jid == two || AlphaxCN.user.jid == three || AlphaxCN.user.jid == four || AlphaxCN.user.jid == five || AlphaxCN.user.jid == six || AlphaxCN.user.jid == seven || AlphaxCN.user.jid == eight) {
             await AlphaxCN.sendMessage(AlphaxCN.user.jid,nw, MessageType.text), console.log(nw), await new Promise(r => setTimeout(r, 1000))
             await heroku.get(baseURI + '/formation').then(async (formation) => { 
@@ -398,6 +398,10 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
                     var text_msg = msg.message.videoMessage.caption;
                 } else if (msg.message) {
                     var text_msg = msg.message.extendedTextMessage === null ? msg.message.conversation : msg.message.extendedTextMessage.text;
+                } else if (msg.message.listMessage) {
+                    var text_msg = msg.message.listMessage === null ? msg.message.conversation : msg.message.listMessage.text;
+                } else if (msg.message.buttonMessage) {
+                    var text_msg = msg.message.buttonMessage === null ? msg.message.conversation : msg.message.buttonMessage.text;
                 } else {
                     var text_msg = undefined;
                 }
