@@ -398,9 +398,9 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
                     var text_msg = msg.message.videoMessage.caption;
                 } else if (msg.message) {
                     var text_msg = msg.message.extendedTextMessage === null ? msg.message.conversation : msg.message.extendedTextMessage.text;
-                } else if (msg.message.listMessage) {
+                } else if (msg.message && msg.message.listMessage) {
                     var text_msg = msg.message.listMessage === null ? msg.message.conversation : msg.message.listMessage.text;
-                } else if (msg.message.buttonMessage) {
+                } else if (msg.message && msg.message.buttonMessage) {
                     var text_msg = msg.message.buttonMessage === null ? msg.message.conversation : msg.message.buttonMessage.text;
                 } else {
                     var text_msg = undefined;
