@@ -36,7 +36,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
 
      if (run == true) { /*if site is down and this is not working */
 
-     await axios.get('https://api.zeks.me/api/ytplaymp3?apikey=' + `${api_key[random_api]}` + '&q=' + `${match[1]}`).then(async (response) => {
+     await axios.get('https://api.zeks.me/api/ytplaymp3?apikey=' + `${api_key[random_api]}` + '&q=' + `${encodeURIComponent(match[1])}`).then(async (response) => {
 
      let down;
      try {
@@ -101,7 +101,7 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
 
      if (run == true) { /*if site is down and this is not working */
 
-     await axios('https://api.zeks.me/api/ytplaymp4?apikey=' + `${api_key[random_api]}` + '&q=' + `${match[1]}`).then (async (response) => {
+     await axios('https://api.zeks.me/api/ytplaymp4?apikey=' + `${api_key[random_api]}` + '&q=' + `${encodeURIComponent(match[1])}`).then (async (response) => {
 
      let down;
      try {
@@ -163,7 +163,7 @@ AlphaX.addCommand({pattern: 'fb ?(.*)', fromMe: WType, desc: DESC}, (async (mess
 
    try { await axios("https://xteam.xyz") } catch { await message.client.sendMessage(message.jid, "*🚫 sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```" , MessageType.text, { quoted: message.data }) };
 
-   await axios("https://xteam.xyz/dl/fbv2?url=" + `${match[1]}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
+   await axios("https://xteam.xyz/dl/fbv2?url=" + `${encodeURIComponent(match[1])}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
 
   if (match[1].includes("https://")) {
          try {
@@ -217,7 +217,7 @@ AlphaX.addCommand({pattern: 'tiktok ?(.*)', fromMe: WType, desc: TDESC}, (async 
 
    try { await axios("https://xteam.xyz") } catch { await message.client.sendMessage(message.jid, "*🚫 sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```" , MessageType.text, { quoted: message.data }) };
 
-   await axios("https://xteam.xyz/dl/tiktok?url=" + `${match[1]}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
+   await axios("https://xteam.xyz/dl/tiktok?url=" + `${encodeURIComponent(match[1])}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
 
    if (match[1].includes("https://")) {
          try {
@@ -269,7 +269,7 @@ AlphaX.addCommand({pattern: 'ig ?(.*)', fromMe: WType, desc: IG_DESC}, (async (m
 
    try { await axios.get("https://xteam.xyz") } catch { await message.client.sendMessage(message.jid, "*🚫 sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```" , MessageType.text, { quoted: message.data }) };
 
-   await axios.get("https://xteam.xyz/dl/igv2?url=" + `${match[1]}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
+   await axios.get("https://xteam.xyz/dl/igv2?url=" + `${encodeURIComponent(match[1])}` + "&APIKEY=" + `${config.XAPI}`).then (async (webpage) => {
 
    if (match[1].includes("https://")) {
          try {
