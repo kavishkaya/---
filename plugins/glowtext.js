@@ -196,7 +196,7 @@ thiccysapi.glowtext({
 
     fs.writeFileSync("./media/glowtext.mp4",imgBuffer.data );
 
-                    await message.sendMessage(fs.readFileSync('./media/glowtext.mp4'), MessageType.video, {quoted: message.data, mimetype: Mimetype.mp4, videoPlayback: true });
+                    await message.sendMessage(fs.readFileSync('./media/glowtext.mp4'), MessageType.video, {quoted: message.data, mimetype: Mimetype.mp4, videoPlayback: true , caption: Config.CAPTION});
 
                 });
         });
