@@ -90,7 +90,7 @@ AlphaX.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddComman
 
 AlphaX.addCommand({pattern: 'bgmlist$', fromMe: true, desc: "Bgm List."}, (async (message, match) => {
 
-const list = "- aaa\n- aaaa\n- ado\n- ah\n- alone\n- ammo\n- ban\n- bar\n- bitch\n- bomu\n- boo\n- boss\n- cat\n- chip\n- chips\n- cone\n- confused\n- congratulate\n- congratulations\n- cry\n- cute\n- dance\n- daragana\n- devil\n- die\n- ducay\n- eat\n- egg\n- ela\n- fake\n- fan\n- fuck\n- groot\n- harada\n- haththikke\n- hee\n- hehe\n- here\n- hey\n- hi\n- hide\n- hikz\n- hmm\n- hot\n- huththo\n- ice\n- idk\n- imhi\n- liyer\n- loading\n- lol\n- love\n- maru\n- meaw\n- mmm\n- mokada\n- moko\n- narakay\n- nice\n- nidi\n- noice\n- noob\n- ooo\n- oops\n- ow\n- pak\n- phone\n- picture\n- puka\n- sad\n- seoriousely\n- sirawatama\n- snile\n- so\n- tnx\n- type\n- umma\n- wait\n- wenaskam\n- what\n- why\n- wow\n- wtf\n- yee\n- yo\n- fail\n- fake\n- give up\n- love\n- oh no\n- seacret"
+const list = "- aaa\n -aaaa\n -ado\n -ah\n -alone\n -ammo\n -ban\n -bar\n -bitch\n -bomu\n -boo\n -boss\n -cat\n -chip\n -chips\n -cone\n -confused\n -congratulate\n -congratulations\n -cry\n -cute\n -dance\n -daragana\n -devil\n -die\n -ducay\n -eat\n -egg\n -ela\n -fan\n -fuck\n -groot\n -harada\n -haththikke\n -hee\n -hehe\n -here\n -hey\n -hi\n -hide\n -hikz\n -hmm\n -hot\n -huththo\n -ice\n -idk\n -imhi\n -liyer\n -loading\n -lol\n -maru\n -meaw\n -mmm\n -mokada\n -moko\n -narakay\n -nice\n -nidi\n -noice\n -noob\n -ooo\n -oops\n -ow\n -pak\n -phone\n -picture\n -puka\n -sad\n -seoriousely\n -sirawatama\n -snile\n -so\n -tnx\n -type\n -umma\n -wait\n -wenaskam\n -what\n -why\n -wow\n -wtf\n -yee\n -yo\n -fail\n -fake\n -give up\n -love\n -oh no\n -seacret\n -power\n -bye\n -mind\n -relax\n -baby"
 
       await message.client.sendMessage(message.jid , '*•🎵 ʙɢᴍ ʟɪsᴛ 🎭•* \n\n```' + list + '```' , MessageType.text, { quoted: message.data });
 
@@ -121,7 +121,7 @@ try {
 
 else if (Config.BGM == 'audio') {
 
-var array = ['fail','fake','give up','love','oh no','seacret']
+var array = ['fail','fake','give up','love','oh no','seacret','power','bitch','wow','relax','mind','bye','bitch','baby']
       array.map( async (bgmtext) => {
            let pattern = new RegExp(`\\b${bgmtext}\\b`, 'g');
 
@@ -142,7 +142,7 @@ try {
 
 else if (Config.BGM == 'true') {
 
-var array = ['aaa','aaaa','ado','ah','alone','ammo','ban','bar','bitch','bomu','boo','boss','cat','chip','chips','cone','confused','congratulate','congratulations','cry','cute','dance','daragana','devil','die','ducay','eat','egg','ela','fake','fan','fuck','groot','harada','haththikke','hee','hehe','here','hey','hi','hide','hikz','hmm','hot','huththo','ice','idk','imhi','liyer','loading','lol','maru','meaw','mmm','mokada','moko','narakay','nice','nidi','noice','noob','ooo','oops','ow','pak','phone','picture','puka','sad','seoriousely','sirawatama','snile','so','tnx','type','umma','wait','wenaskam','what','why','wow','wtf','yee','yo','fail','fake','give up','love','oh no','seacret']
+var array = ['aaa','aaaa','ado','ah','alone','ammo','ban','bar','bitch','bomu','boo','boss','cat','chip','chips','cone','confused','congratulate','congratulations','cry','cute','dance','daragana','devil','die','ducay','eat','egg','ela','fan','fuck','groot','harada','haththikke','hee','hehe','here','hey','hi','hide','hikz','hmm','hot','huththo','ice','idk','imhi','liyer','loading','lol','maru','meaw','mmm','mokada','moko','narakay','nice','nidi','noice','noob','ooo','oops','ow','pak','phone','picture','puka','sad','seoriousely','sirawatama','snile','so','tnx','type','umma','wait','wenaskam','what','why','wow','wtf','yee','yo','fail','fake','give up','love','oh no','seacret','power','bye','mind','relax','baby']
       array.map( async (bgmtext) => {
            let pattern = new RegExp(`\\b${bgmtext}\\b`, 'g');
 
