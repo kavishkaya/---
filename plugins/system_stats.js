@@ -10,7 +10,7 @@ const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
 let msg = ` ╭──────────────────╮
-     ${Config.C_EMOJI} *Ａｌｐｈａ-Ｘ* ⛓️
+${Config.C_EMOJI} *Ａｌｐｈａ-Ｘ-WA-BOT* ${Config.D_EMOJI}
  ╭──────────────────╯
  │ 🗿 *Dᴇᴠᴇʟᴏᴘᴇʀs*
  │ *• Sʟ-Aʟᴘʜᴀ-X*
