@@ -32,15 +32,15 @@ AlphaX.addCommand({pattern: 'link$', fromMe: WType, desc: DESC }, (async (messag
             message: message.reply_message.data.quotedMessage
         });
         var fin = location.split('.')[1]
-        exec('mv ' + location + ' /root/WhatsAsenaDuplicated/telegra-ph-upload.pngg')
+        exec('mv ' + location + ' /root/WhatsAsenaDuplicated/telegra-ph-upload.png')
         
             uploadByBuffer(fs.readFileSync('telegra-ph-upload.png'))
               .then(async (result) => {
              await message.client.sendMessage(
                     message.jid,
-                    fs.readFileSync('/root/WhatsAsenaDuplicated/telegra-ph-upload.pngg'),
+                    fs.readFileSync('/root/WhatsAsenaDuplicated/telegra-ph-upload.png'),
                     MessageType.image,
-                    { caption: '*✅ Fɪʟᴇ sᴜᴄᴄᴇssғᴜʟʏ ᴜᴘʟᴏᴀᴅᴇᴅ ᴛᴏ* _telegra.ph_\n\n' + `*🔺ʟɪɴᴋ ➙*  _${result.link}_ \n*🔩️ ᴘᴀᴛʜ ➙* _${result.path}_ \n`, thumbnail: fs.readFileSync('/root/WhatsAsenaDuplicated/telegra-ph-upload.pngg' )}
+                    { caption: '*✅ Fɪʟᴇ sᴜᴄᴄᴇssғᴜʟʏ ᴜᴘʟᴏᴀᴅᴇᴅ ᴛᴏ* _telegra.ph_\n\n' + `*🔺ʟɪɴᴋ ➙*  _${result.link}_ \n*🔩️ ᴘᴀᴛʜ ➙* _${result.path}_ \n`, thumbnail: fs.readFileSync('/root/WhatsAsenaDuplicated/telegra-ph-upload.png' )}
                  );
             });
 

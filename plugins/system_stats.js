@@ -9,33 +9,35 @@ let WType = Config.WORKTYPE == 'public' ? false : true
 const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
-let msg = '╭';
-msg += '──────────────────╮ \n';
-msg += ' *🔭 Ａｌｐｈａ-Ｘ-WA-BOT 📊*';
-msg += '╭──────────────────╯'
-msg += '\n│\n';
-msg += '│ 🍁 *Dᴇᴠᴇʟᴏᴘʀᴇs* \n';
-msg += '│ *• Sʟ-Aʟᴘʜᴀ-X* \n';
-msg += '│ *• HᴀɴsᴀᴋᴀBʀᴏ* ';
-msg += '\n│\n│';
-msg += ' *🚀 Vᴇʀsɪᴏɴ️* \n';
-msg += '│ ➲ _' + Config.VERSION + '_';
-msg += '\n│\n';
-msg += '│ *🛠️ Bʀᴀɴᴄʜ 🛠️* \n';
-msg += '│ ➲ _' + Config.BRANCH + '_';
-msg += '\n│\n';
-msg += '│ *📨 Tᴇʟᴇɢʀᴀᴍ Gʀᴏᴜᴘ* \n';
-msg += '│ ➲ _https://t.me/AlphaX_SUPPORT_';
-msg += '\n│\n';
-msg += '│ *🔌 Pʟᴜɢɪɴ Cʜᴀɴɴᴇʟ* \n';
-msg += '│ ➲ _https://t.me/AlphaX_plugin_';
-msg += '\n│\n';
-msg += '│ *💸 Wʜᴀᴛsᴀᴘᴘ Gʀᴏᴜᴘ* \n';
-msg += '│ ➲ _' + Config.GROUP + '_ \n';
-msg += '╰──────────────────╯';
+let msg = `
+ ╭──────────────────╮
+    💹 *Ａｌｐｈａ-Ｘ* ⛓️  
+ ╭──────────────────╯
+ │ 🗿 *Dᴇᴠᴇʟᴏᴘᴇʀs*
+ │ *• Sʟ-Aʟᴘʜᴀ-X*
+ │ *• HᴀɴsᴀᴋᴀBʀᴏ*
+ │
+ │ *📈 Vᴇʀsɪᴏɴ️*
+ │ ➲ _${Config.VERSION}_
+ │
+ │ *👾 Bʀᴀɴᴄʜ 🛠️*
+ │ ➲ _${Config.BRANCH}_
+ │
+ │ *💸 Tᴇʟᴇɢʀᴀᴍ Gʀᴏᴜᴘ*
+ │ ➲ _https://t.me/AlphaX_SUPPORT_
+ │
+ │ *🔌 Pʟᴜɢɪɴ Cʜᴀɴɴᴇʟ*
+ │ ➲ _https://t.me/AlphaX_plugin_
+ │
+ │ *📂 Wʜᴀᴛsᴀᴘᴘ Gʀᴏᴜᴘ*
+ │ ➲ _${Config.GROUP}_
+ ╰──────────────────╯
+`
 
 
-    AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.ALIVE_DESC}, (async (message, match) => {
+AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.ALIVE_DESC}, (async (message, match) => {
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8');
 
         if (Config.ALIVEMSG == 'default') {
 
@@ -43,19 +45,81 @@ msg += '╰──────────────────╯';
         let PIC
         try { PIC = await Axios.get(`${Config.A_PIC}`, {responseType: 'arraybuffer'}) } catch { PIC = await Axios.get(ppurl, {responseType : 'arraybuffer'}) }
 
-            await message.client.sendMessage(message.jid, Buffer.from(PIC.data), MessageType.image, {mimetype: Mimetype.png, caption: msg, quoted: message.data, thumbnail: Buffer.from(PIC.data) });
+    const media = await message.client.prepareMessage(message.jid, Buffer.from(PIC.data) , MessageType.image, { thumbnail: Buffer.from(PIC.data) })
+
+    const buttons = [
+    {
+      buttonId: "-sysd",
+      buttonText: { displayText: "🔐 sʏsᴛᴇᴍ sᴛᴀᴛᴜs \n\n" + child },
+      type: 1
+    }
+      ];
+
+    const buttonMessage = {
+        contentText: null ,
+        footerText: msg ,
+        buttons: buttons,
+        headerType: 4,
+        imageMessage: media.message.imageMessage    
+    };
+
+    await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage, { quoted: message.data } );
+
         }
         else {
             var payload = Config.ALIVEMSG
             const status = await message.client.getStatus()
 
             if (payload.includes('{pp}')) {
+
                 const ppUrl = await message.client.getProfilePicture() 
                 const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
-                await message.sendMessage(Buffer(resim.data), MessageType.image, { caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL), quoted: message.data, thumbnail: Buffer(resim.data) });
+
+    var imgBuffer = Buffer.from(resim.data)
+
+    const media = await message.client.prepareMessage(message.jid, imgBuffer , MessageType.image, { thumbnail: imgBuffer })
+
+    const buttons = [
+    {
+      buttonId: "-sysd",
+      buttonText: { displayText: "🔐 sʏsᴛᴇᴍ sᴛᴀᴛᴜs \n\n" + child },
+      type: 1
+    }
+      ];
+
+    const buttonMessage = {
+        contentText: null ,
+        footerText: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL) ,
+        buttons: buttons,
+        headerType: 4,
+        imageMessage: media.message.imageMessage    
+    };
+
+    await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage, { quoted: message.data } );
+
             }
             else if (payload.includes('{logo}')) {
-                await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAlphaXDuplicated/media/Alpha-X.png'), MessageType.image, { mimetype: Mimetype.png, caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL).replace('{logo}', ''), quoted: message.data, thumbnail: fs.readFileSync('/root/WhatsAlphaXDuplicated/media/Alpha-X.png') });
+
+    const media = await message.client.prepareMessage(message.jid, fs.readFileSync('/root/WhatsAlphaXDuplicated/media/Alpha-X.png') , MessageType.image, { thumbnail: fs.readFileSync('/root/WhatsAlphaXDuplicated/media/Alpha-X.png') })
+
+    const buttons = [
+    {
+      buttonId: "-sysd",
+      buttonText: { displayText: "🔐 sʏsᴛᴇᴍ sᴛᴀᴛᴜs \n\n" + child },
+      type: 1
+    }
+      ];
+
+    const buttonMessage = {
+        contentText: null ,
+        footerText: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL).replace('{logo}', '') ,
+        buttons: buttons,
+        headerType: 4,
+        imageMessage: media.message.imageMessage    
+    };
+
+    await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage, { quoted: message.data } );
+
             }
             else {
             var payload = Config.ALIVEMSG
@@ -63,15 +127,34 @@ msg += '╰──────────────────╯';
             let PIC
             try { PIC = await Axios.get(`${Config.A_PIC}`, {responseType: 'arraybuffer'}) } catch { PIC = await Axios.get(ppurl, {responseType : 'arraybuffer'}) }
 
-                await message.sendMessage(Buffer(PIC.data), MessageType.image, { caption: payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL), quoted: message.data, thumbnail: Buffer(PIC.data) });
+    const media = await message.client.prepareMessage(message.jid, Buffer.from(PIC.data), MessageType.image, { thumbnail: Buffer.from(PIC.data) })
+
+    const buttons = [
+    {
+      buttonId: "-sysd",
+      buttonText: { displayText: "🔐 sʏsᴛᴇᴍ sᴛᴀᴛᴜs \n\n" + child },
+      type: 1
+    }
+      ];
+
+    const buttonMessage = {
+        contentText: null ,
+        footerText: payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL) ,
+        buttons: buttons,
+        headerType: 4,
+        imageMessage: media.message.imageMessage    
+    };
+
+    await message.client.sendMessage(message.jid, buttonMessage, MessageType.buttonsMessage, { quoted: message.data } );
+
             }
         }
     }));
 
-    AlphaX.addCommand({pattern: 'sysd', fromMe: WType, desc: Lang.SYSD_DESC}, (async (message, match) => {
+    AlphaX.addCommand({pattern: 'sysd$', fromMe: WType, desc: Lang.SYSD_DESC}, (async (message, match) => {
 
         const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8');
         await message.sendMessage(
             '```' + child + '```', MessageType.text
         );
-    }));
+}));
