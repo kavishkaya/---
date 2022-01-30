@@ -9,9 +9,8 @@ let WType = Config.WORKTYPE == 'public' ? false : true
 const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
-let msg = `
- ╭──────────────────╮
-    💹 *Ａｌｐｈａ-Ｘ* ⛓️  
+let msg = ` ╭──────────────────╮
+     ${Congig.C_EMOJI} *Ａｌｐｈａ-Ｘ* ⛓️
  ╭──────────────────╯
  │ 🗿 *Dᴇᴠᴇʟᴏᴘᴇʀs*
  │ *• Sʟ-Aʟᴘʜᴀ-X*
@@ -56,7 +55,7 @@ AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.
       ];
 
     const buttonMessage = {
-        contentText: "‎" ,
+        contentText: "‎*»»»»»»»»»»»»»««««««««««««««*" ,
         footerText: msg ,
         buttons: buttons,
         headerType: 4,
@@ -88,7 +87,7 @@ AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.
       ];
 
     const buttonMessage = {
-        contentText: "‎" ,
+        contentText: "‎*»»»»»»»»»»»»»««««««««««««««*" ,
         footerText: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL) ,
         buttons: buttons,
         headerType: 4,
@@ -111,7 +110,7 @@ AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.
       ];
 
     const buttonMessage = {
-        contentText: "‎" ,
+        contentText: "‎*»»»»»»»»»»»»»««««««««««««««*" ,
         footerText: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL).replace('{logo}', '') ,
         buttons: buttons,
         headerType: 4,
@@ -138,7 +137,7 @@ AlphaX.addCommand({pattern: `${Config.AM_KEY} ?(.*)`, fromMe: WType, desc: Lang.
       ];
 
     const buttonMessage = {
-        contentText: "‎" ,
+        contentText: "‎*»»»»»»»»»»»»»««««««««««««««*" ,
         footerText: payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL) ,
         buttons: buttons,
         headerType: 4,
