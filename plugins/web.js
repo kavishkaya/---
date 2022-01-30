@@ -138,7 +138,7 @@ AlphaX.addCommand({pattern: 'ping$', fromMe: true, deleteCommand: false, desc: L
   var end = new Date().getTime();
 
   await message.client.sendMessage(
-    message.jid,'   ```️🛡️ Pɪɴɢ!```\n*❝ ' + (end - start) + ' ms ❞*', MessageType.text, { quoted: message.data });
+    message.jid,' ```️🛡️ Pɪɴɢ!```\n*❝ ' + (end - start) + ' ms ❞*', MessageType.text, { quoted: message.data });
 }));
 
 if (Config.WORKTYPE == 'private') {
