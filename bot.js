@@ -433,7 +433,7 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
                     var text_msg = msg.message.videoMessage.caption;
                 } else if (msg.message) {
                     var text_msg = msg.message.extendedTextMessage === null ? msg.message.conversation : msg.message.extendedTextMessage.text;
-                } else 
+                } else {
                     var text_msg = undefined;
                 }
                 if ((command.on !== undefined && (command.on === 'image' || command.on === 'photo')
