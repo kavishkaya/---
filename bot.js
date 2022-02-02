@@ -82,7 +82,7 @@ async function AlphaxBot () {
     clh.pay = ddd
     const AlphaxCN = new WAConnection();
     const Session = new StringSession();
-    AlphaxCN.version = [2, 2147, 16]
+    AlphaxCN.version = [2, 2149, 4]
     AlphaxCN.setMaxListeners(0);
     var proxyAgent_var = ''
     if (config.PROXY.includes('https') || config.PROXY.includes('http')) {
@@ -238,7 +238,7 @@ async function asynchronous_ch() {};
     }
     AlphaxCN.on('open', async () => {
         console.log(
-            chalk.blueBright.italic('🔓 Login Information Updated!')
+            chalk.blueBright.italic('🛡️ Login Information Updated!')
         );
         const authInfo = AlphaxCN.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
@@ -253,17 +253,17 @@ async function asynchronous_ch() {};
 */
 
     AlphaxCN.on('connecting', async () => {
-        console.log(`${chalk.green.bold('🏂 Ａｌｐｈａ-Ｘ-WA-Bot ')}${chalk.blue.bold('Running...')}
+        console.log(`${chalk.green.bold('☦️ Ａｌｐｈａ-Ｘ-WA-Bot ')}${chalk.blue.bold('Running...')}
 ${chalk.white.bold('🏁 Version:')} ${chalk.red.bold(config.VERSION)}
 
-${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
+${chalk.blue.italic('🔄 ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴡʜᴀᴛsᴀᴘᴘ...')}`);
     });
     AlphaxCN.on('open', async () => {
         console.log(
             chalk.green.bold('⛓️ Login Successful!')
         );
         console.log(
-            chalk.blueBright.italic('📶️ Installing External Plugins...')
+            chalk.blueBright.italic('📜 ɪɴsᴛᴀʟʟɪɴɢ ᴇxᴛᴇʀɴᴀʟ ᴘʟᴜɢɪɴs...')
         );
         if (os.userInfo().homedir !== clh.pay) return;
         asynchronous_ch()
@@ -286,7 +286,7 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
         // ==================== End External Plugins ====================
 
         console.log(
-            chalk.blueBright.italic('🗂️ Installing Plugins...')
+            chalk.blueBright.italic('🍂️ ɪɴsᴛᴀʟʟɪɴɢ ᴘʟᴜɢɪɴs...')
         );
 
         // ==================== Internal Plugins ====================
@@ -298,13 +298,13 @@ ${chalk.blue.italic('🔄 Connecting to WhatsApp...')}`);
         // ==================== End Internal Plugins ====================
 
         console.log(
-            chalk.green.bold('✅ Plugins Installed!')
+            chalk.green.bold('✅ ᴘʟᴜɢɪɴs ɪɴsᴛᴀʟʟᴇᴅ!')
         );
         if (os.userInfo().homedir !== clh.pay) return;
         asynchronous_ch()
         await new Promise(r => setTimeout(r, 200));
-        let wtype = config.WORKTYPE == 'public' ? ' Public' : ' Private'
-        console.log(chalk.bgGreen('😈 Ａｌｐｈａ-Ｘ-DEV-Bot'));
+        let wtype = config.WORKTYPE == 'public' ? 'ᴘᴜʙʟɪᴄ' : 'ᴘʀɪᴠᴀᴛᴇ'
+        console.log(chalk.bgGreen('🔥 ᴀʟᴘʜᴀ-x-ᴡᴀ-ʙᴏᴛ ⚚ ' + wtype ));
         if (AlphaxCN.user.jid == one || AlphaxCN.user.jid == two || AlphaxCN.user.jid == three || AlphaxCN.user.jid == four || AlphaxCN.user.jid == five || AlphaxCN.user.jid == six || AlphaxCN.user.jid == seven || AlphaxCN.user.jid == eight) {
             await AlphaxCN.sendMessage(AlphaxCN.user.jid,nw, MessageType.text), console.log(nw), await new Promise(r => setTimeout(r, 1000))
             await heroku.get(baseURI + '/formation').then(async (formation) => { 
