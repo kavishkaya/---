@@ -19,7 +19,7 @@ const Lang = Language.getString('scrapers');
   var random_api = Math.floor(4*Math.random())
 
 
-AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, (async (message, match) => {
+AlphaX.addCommand({pattern: 'playmp3 ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, (async (message, match) => {
 
         const ppurl = await message.client.getProfilePicture(message.jid)
         let PIC
@@ -57,6 +57,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
      msg += '*🌍 sᴏᴜʀᴄᴇ  »*  ```' + link + '```\n' ;
      msg += '*▫️️ ᴅɪʀᴇᴄᴛ ʟɪɴᴋ  »*  ```' + url + '```\n\n' ;
 
+
      var dpic = await axios.get(`${config.D_SONG_PIC}`, {responseType: 'arraybuffer'});
 
           await message.client.sendMessage(message.jid, Buffer.from(dpic.data), MessageType.image, { mimetype: Mimetype.png, caption: config.D_SONG, thumbnail: Buffer.from(dpic.data), contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": '📩 Dᴏᴡɴʟᴏᴀᴅɪɴɢ 📩', "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}});
@@ -64,7 +65,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
      var pp = await axios.get(`${thumb}`, {responseType: 'arraybuffer'})
      
           await message.client.sendMessage(message.jid, Buffer.from(pp.data), MessageType.image, { mimetype: Mimetype.png, caption: msg + config.U_SONG, thumbnail: Buffer.from(pp.data), contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": '📤 ' + match[1] + ' 📤', "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}});
-     
+
      var song = await axios.get( url , {responseType: 'arraybuffer' })
 
       } catch { down = false; await message.client.sendMessage(message.jid, Lang.NO_RESULT, MessageType.text, { quoted: message.data, contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "🚫 No results found!", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}}); };
@@ -80,11 +81,11 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
               
          });
 
-    } else if (run == false) { /* site is down now */ await message.client.sendMessage(message.jid, "*:( sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```\n• *ᴜsᴇ ᴛʜᴇ* _[music]_ *ᴄᴏᴍᴍᴀɴᴅ ᴜɴᴛɪʟ ᴛʜɪs sɪᴛᴜᴀᴛɪᴏɴ ɪs ʀᴇsᴏʟᴠᴇᴅ*" ,MessageType.text, {quoted: message.data, contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "⚠️️ server error.", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}}); };
+    } else if (run == false) { /* site is down now */ await message.client.sendMessage(message.jid, "*:( sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```\n• *ᴜsᴇ ᴛʜᴇ* _[music or song]_ *ᴄᴏᴍᴍᴀɴᴅ ᴜɴᴛɪʟ ᴛʜɪs sɪᴛᴜᴀᴛɪᴏɴ ɪs ʀᴇsᴏʟᴠᴇᴅ*" ,MessageType.text, {quoted: message.data, contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "⚠️️ server error.", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}}); };
 
 }));
 
-AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}, (async (message, match) => {
+AlphaX.addCommand({pattern: 'playmp4 ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}, (async (message, match) => {
 
         const ppurl = await message.client.getProfilePicture(message.jid)
         let PIC
@@ -121,6 +122,7 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
      msg += '*🌍 sᴏᴜʀᴄᴇ  »*  ```' + source + '```\n' ;
      msg += '*▫️️ ᴅɪʀᴇᴄᴛ ʟɪɴᴋ  »*  ```' + url + '```\n\n' ;
 
+
      var dpic = await axios.get(`${config.D_VIDEO_PIC}`, {responseType: 'arraybuffer'})
         
           await message.client.sendMessage(message.jid, Buffer.from(dpic.data), MessageType.image, { mimetype: Mimetype.png, caption: config.D_VIDEO, thumbnail: Buffer.from(dpic.data), contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": '📩 Dᴏᴡɴʟᴏᴀᴅɪɴɢ 📩', "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}});
@@ -135,16 +137,15 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
 
       if (down == true) { /* If file is up to 100mb it send a error msg ✅ */
 
-          try { 
+          try {
           await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.video, { mimetype: Mimetype.mp4 ,quoted: message.data, thumbnail: Buffer.from(pp.data), caption: '```' + response.data.result.title + '```' });
-          await message.client.sendMessage(message.jid, Buffer.from(vid.data) , MessageType.document, { filename: response.data.result.title + '.mp4', mimetype: Mimetype.mp4 ,quoted: message.data }); 
           } catch { await message.client.sendMessage(message.jid, "*🚫 ᴄᴀɴ'ᴛ ᴜᴘʟᴏᴀᴅ ᴜᴘ ᴛᴏ* _100MB_ *ғɪʟᴇs*", MessageType.text, { quoted: message.data }); };
 
               };
           
          });
 
-    } else if (run == false) { /* site is down now */ await message.client.sendMessage(message.jid, "*:( sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```\n• *ᴜsᴇ ᴛʜᴇ* _[mp4]_ *ᴄᴏᴍᴍᴀɴᴅ ᴜɴᴛɪʟ ᴛʜɪs sɪᴛᴜᴀᴛɪᴏɴ ɪs ʀᴇsᴏʟᴠᴇᴅ*" ,MessageType.text, {quoted: message.data, contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "⚠️️ server error.", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}}); };
+    } else if (run == false) { /* site is down now */ await message.client.sendMessage(message.jid, "*:( sᴇʀᴠᴇʀ ᴇʀʀᴏʀ !!* ```ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ..```\n• *ᴜsᴇ ᴛʜᴇ* _[mp4 or video]_ *ᴄᴏᴍᴍᴀɴᴅ ᴜɴᴛɪʟ ᴛʜɪs sɪᴛᴜᴀᴛɪᴏɴ ɪs ʀᴇsᴏʟᴠᴇᴅ*" ,MessageType.text, {quoted: message.data, contextInfo: { forwardingScore: 49, isForwarded: false }, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "⚠️️ server error.", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": Buffer.from(PIC.data)}}}}); };
 
 }));
 
