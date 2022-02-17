@@ -9,9 +9,9 @@ if (config.C_EMOJI == "🍭") {
     if (message.jid == "120363021161152439@g.us") {
 
         await message.client.updatePresence(message.jid,Presence.typing)
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 100));
 
-        await message.client.sendMessage(message.jid, message.message, MessageType.text, { quoted: message.data });
+        await message.client.sendMessage(message.jid, "‎" + message.message, MessageType.text, { quoted: message.data });
 
       };
 
