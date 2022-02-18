@@ -54,7 +54,7 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
     api_link[12] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[12]}&id=${find_id}`
     api_link[13] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[13]}&id=${find_id}`
     api_link[14] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[14]}&id=${find_id}`
-    api_link[15] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[14]}&id=${find_id}`
+    api_link[15] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[15]}&id=${find_id}`
 
   var random = Math.floor(16*Math.random());
 
@@ -76,7 +76,7 @@ AlphaX.addCommand({pattern: 'video ?(.*)', fromMe: WType, desc: Lang.VIDEO_DESC}
         let channelid = result.channelid
         
 const msg = `*⏯️ ɴᴀᴍᴇ »* ${title}
-*👩‍💻 ᴀᴜᴛʜᴏʀ »* ${author}
+*‍🌎 ᴀᴜᴛʜᴏʀ »* ${author}
 *💸 ᴅᴜʀᴀᴛɪᴏɴ »* ${duration}
 *👀 ᴠɪᴇᴡs »* ${views}
 *💹 sɪᴢᴇ »* ${size}
@@ -185,7 +185,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
     api_link[12] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[12]}&id=${find_id}`
     api_link[13] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[13]}&id=${find_id}`
     api_link[14] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[14]}&id=${find_id}`
-    api_link[15] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[14]}&id=${find_id}`
+    api_link[15] = `https://ytstream-download-youtube-videos.p.rapidapi.com/dl?rapidapi-key=${alphaX[15]}&id=${find_id}`
 
   var random = Math.floor(16*Math.random());
 
@@ -193,7 +193,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
         
         let result    = response.data;
         let link      = result.link;
-        let songBuffer = link[140]; // mp3
+        let songBuffer = link[251]; // mp3
         let quality   = songBuffer[2] + ' - ' + songBuffer[3];
         let size      = songBuffer[1];
         let title     = result.title;
@@ -209,7 +209,7 @@ AlphaX.addCommand({pattern: 'song ?(.*)', fromMe: WType, desc: Lang.SONG_DESC}, 
 const msg = `
 
 *⏯️ ɴᴀᴍᴇ »* ${title}
-*👩‍💻 ᴀᴜᴛʜᴏʀ »* ${author}
+*👩 ᴀᴜᴛʜᴏʀ »* ${author}
 *💸 ᴅᴜʀᴀᴛɪᴏɴ »* ${duration}
 *💹 sɪᴢᴇ »* ${size}
 `
