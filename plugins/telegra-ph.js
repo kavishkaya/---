@@ -32,7 +32,7 @@ AlphaX.addCommand({pattern: 'link$', fromMe: WType, desc: DESC }, (async (messag
             message: message.reply_message.data.quotedMessage
         });
         var fin = location.split('.')[1]
-        exec('mv ' + location + ' /root/WhatsAsenaDuplicated/telegra-ph-upload.png')
+        exec('mv ' + location + ' /root/WhatsAsenaDuplicated/telegra-ph-upload.png', 'telegra-ph-upload/png')
         
             uploadByBuffer(fs.readFileSync('telegra-ph-upload.png'))
               .then(async (result) => {
